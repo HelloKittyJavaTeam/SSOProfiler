@@ -44,8 +44,8 @@ public class Role extends BaseObject implements Serializable{
 	
 	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name="SSO_USER_ROLE",
-			joinColumns=@JoinColumn(name="ROLE_ID"),
-			inverseJoinColumns=@JoinColumn(name="USER_ID"))
+			joinColumns=@JoinColumn(name="ID_ROLE"),
+			inverseJoinColumns=@JoinColumn(name="ID_USER"))
 	private List<User> users;
 
 	public Role() {}
