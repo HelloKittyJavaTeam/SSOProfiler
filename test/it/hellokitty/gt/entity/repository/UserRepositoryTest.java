@@ -24,7 +24,7 @@ import org.junit.Test;
 
 public class UserRepositoryTest {
 	private UserRepositoryImpl userRep = new UserRepositoryImpl();
-	private static EntityManager em = Persistence.createEntityManagerFactory("BULLETIN_PU").createEntityManager();
+	private static EntityManager em = Persistence.createEntityManagerFactory("SSOPROFILER_PU").createEntityManager();
 	private static User userAdd;
 
 	@Before
@@ -263,7 +263,7 @@ public class UserRepositoryTest {
 		}
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("fileName", "NAMETEST 0");
+		map.put("firstName", "NAMETEST 0");
 		
 		try{
 			userList = userRep.search(0, 20, null, map, null, null, null);
@@ -273,7 +273,7 @@ public class UserRepositoryTest {
 		}
 		
 		map = new HashMap<String, Object>();
-		map.put("fileName", "NAMETEST");
+		map.put("firstName", "NAMETEST");
 
 		try{
 			userList = userRep.search(0, 20, null, null, map, null, null);

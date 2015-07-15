@@ -24,7 +24,7 @@ import org.junit.Test;
 
 public class RoleRepositoryTest {
 	private RoleRepositoryImpl roleRep = new RoleRepositoryImpl();
-	private static EntityManager em = Persistence.createEntityManagerFactory("BULLETIN_PU").createEntityManager();
+	private static EntityManager em = Persistence.createEntityManagerFactory("SSOPROFILER_PU").createEntityManager();
 	private static Role roleAdd;
 
 	@Before
@@ -263,7 +263,7 @@ public class RoleRepositoryTest {
 		}
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("fileName", "NAMETEST 0");
+		map.put("name", "NAMETEST 0");
 		
 		try{
 			roleList = roleRep.search(0, 20, null, map, null, null, null);
@@ -273,7 +273,7 @@ public class RoleRepositoryTest {
 		}
 		
 		map = new HashMap<String, Object>();
-		map.put("fileName", "NAMETEST");
+		map.put("name", "NAMETEST");
 
 		try{
 			roleList = roleRep.search(0, 20, null, null, map, null, null);

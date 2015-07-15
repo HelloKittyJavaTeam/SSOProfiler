@@ -24,7 +24,7 @@ import org.junit.Test;
 
 public class ApplicationRepositoryTest{
 	private ApplicationRepositoryImpl applicationRep = new ApplicationRepositoryImpl();
-	private static EntityManager em = Persistence.createEntityManagerFactory("BULLETIN_PU").createEntityManager();
+	private static EntityManager em = Persistence.createEntityManagerFactory("SSOPROFILER_PU").createEntityManager();
 	private static Application applicationAdd;
 
 	@Before
@@ -263,7 +263,7 @@ public class ApplicationRepositoryTest{
 		}
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("fileName", "NAMETEST 0");
+		map.put("name", "NAMETEST 0");
 		
 		try{
 			applicationList = applicationRep.search(0, 20, null, map, null, null, null);
@@ -273,7 +273,7 @@ public class ApplicationRepositoryTest{
 		}
 		
 		map = new HashMap<String, Object>();
-		map.put("fileName", "NAMETEST");
+		map.put("name", "NAMETEST");
 
 		try{
 			applicationList = applicationRep.search(0, 20, null, null, map, null, null);
