@@ -1,2 +1,0 @@
-# SSOProfiler
-Profile manager
