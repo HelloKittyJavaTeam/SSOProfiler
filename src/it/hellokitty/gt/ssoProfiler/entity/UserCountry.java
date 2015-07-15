@@ -32,7 +32,7 @@ public class UserCountry extends BaseObject implements Serializable{
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_COUNTRY")
-	private GeoCountries geoCountry;
+	private GeoCountries country;
 
 	public UserCountry() {}
 
@@ -45,11 +45,11 @@ public class UserCountry extends BaseObject implements Serializable{
 	}
 
 	public GeoCountries getGeoCountry() {
-		return geoCountry;
+		return country;
 	}
 
 	public void setGeoCountry(GeoCountries geoCountry) {
-		this.geoCountry = geoCountry;
+		this.country = geoCountry;
 	}
 
 	public User getUser() {

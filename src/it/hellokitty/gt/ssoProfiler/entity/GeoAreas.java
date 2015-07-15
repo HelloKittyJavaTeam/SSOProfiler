@@ -16,67 +16,62 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * The persistent class for the GEO_AREA database table.
- * 
- */
 @Entity
-@Table(name="SSO_GEO_AREAS")
+@Table(name = "SSO_GEO_AREAS")
 public class GeoAreas implements Serializable {
-
-	private static final long serialVersionUID = -5105519286717242606L;
+	private static final long serialVersionUID = -8479115937055682634L;
 
 	@Id 
 	@Basic(optional = false)
 	@Column(name="ID")
 	private String id;
-
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_AREA", referencedColumnName="ID")
 	private List<UserArea> userAreas;
-
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_AREA", referencedColumnName="ID")
-	private List<GeoRegions> geoRegions;
-
+	private List<GeoRegions> regions;
+	
 	@Column(name="DESCRIPTION_IT")
 	private String descriptionIt;
-
+	
 	@Column(name="DESCRIPTION_EN")
 	private String descriptionEn;
-
+	
 	@Column(name="DESCRIPTION_FR")
 	private String descriptionFr;
-
+	
 	@Column(name="DESCRIPTION_DE")
 	private String descriptionDe;
-
+	
 	@Column(name="DESCRIPTION_ES")
 	private String descriptionEs;
-
+	
 	@Column(name="DESCRIPTION_ZH")
 	private String descriptionZh;
-
+	
 	@Column(name="DESCRIPTION_JP")
 	private String descriptionJp;
-
+	
 	@Column(name="DATE_INS")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateIns;
-
+	
 	@Column(name="DATE_MOD")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateMod;
-
+	
 	@Column(name="USER_INS")
 	private String userIns;
-
+	
 	@Column(name="USER_MOD")
 	private String userMod;
-
+	
 	@Column(name="ACTIVE")
 	private String active;
-
+	
 	public GeoAreas(){}
 
 	public String getId() {
@@ -86,7 +81,15 @@ public class GeoAreas implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
+	public List<GeoRegions> getRegions() {
+		return regions;
+	}
+
+	public void setRegions(List<GeoRegions> regions) {
+		this.regions = regions;
+	}
+
 	public String getDescriptionIt() {
 		return descriptionIt;
 	}
@@ -197,13 +200,5 @@ public class GeoAreas implements Serializable {
 
 	public void setUserAreas(List<UserArea> userAreas) {
 		this.userAreas = userAreas;
-	}
-
-	public List<GeoRegions> getGeoRegions() {
-		return geoRegions;
-	}
-
-	public void setGeoRegions(List<GeoRegions> geoRegions) {
-		this.geoRegions = geoRegions;
 	}
 }

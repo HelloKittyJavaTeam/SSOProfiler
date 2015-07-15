@@ -32,7 +32,7 @@ public class UserRegion extends BaseObject implements Serializable{
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_REGION")
-	private GeoRegions geoRegion;
+	private GeoRegions region;
 
 	public UserRegion() {}
 
@@ -44,12 +44,12 @@ public class UserRegion extends BaseObject implements Serializable{
 		this.id = id;
 	}
 	
-	public GeoRegions getGeoRegion() {
-		return geoRegion;
+	public GeoRegions getRegion() {
+		return region;
 	}
 
-	public void setGeoRegion(GeoRegions geoRegion) {
-		this.geoRegion = geoRegion;
+	public void setGeoRegion(GeoRegions region) {
+		this.region = region;
 	}
 
 	public User getUser() {

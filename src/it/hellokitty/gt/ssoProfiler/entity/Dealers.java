@@ -12,30 +12,41 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 /**
- * The persistent class for the DEALER database table.
+ * The persistent class for the DEALERS database table.
  * 
  */
 @Entity
-@Table(name="SSO_DEALERS")
+@Table(name="DEALERS")
+@NamedQuery(name="Dealers.findAll", query="SELECT d FROM Dealers d")
 public class Dealers implements Serializable {
-	private static final long serialVersionUID = 1464867322726795341L;
+	private static final long serialVersionUID = -3548589032187394603L;
 
 	@Id
 	private String id;
-
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_COUNTRY")
-	private GeoCountries geoCountry;
-
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_DEALER", referencedColumnName="ID")
 	private List<UserDealer> userDealers;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="COUNTRY_CODE", referencedColumnName="ID_ISO3166")
+	private GeoCountries country;
+	
+	public GeoCountries getCountry() {
+		return country;
+	}
+
+	public void setCountry(GeoCountries country) {
+		this.country = country;
+	}
 
 	private String active;
 
@@ -44,9 +55,6 @@ public class Dealers implements Serializable {
 	private String city;
 
 	private String complement;
-
-	@Column(name="COUNTRY_CODE")
-	private String countryCode;
 
 	@Column(name="DATE_INS")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -211,14 +219,6 @@ public class Dealers implements Serializable {
 
 	public void setComplement(String complement) {
 		this.complement = complement;
-	}
-
-	public String getCountryCode() {
-		return this.countryCode;
-	}
-
-	public void setCountryCode(String countryCode) {
-		this.countryCode = countryCode;
 	}
 
 	public Date getDateIns() {
@@ -539,5 +539,13 @@ public class Dealers implements Serializable {
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+
+	public List<UserDealer> getUserDealers() {
+		return userDealers;
+	}
+
+	public void setUserDealers(List<UserDealer> userDealers) {
+		this.userDealers = userDealers;
 	}
 }

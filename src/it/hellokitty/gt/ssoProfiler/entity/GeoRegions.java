@@ -17,84 +17,98 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * The persistent class for the GEO_REGION database table.
- * 
- */
 @Entity
-@Table(name="SSO_GEO_REGIONS")
-public class GeoRegions implements Serializable{
-	private static final long serialVersionUID = -8612943804390093592L;
+@Table(name = "SSO_GEO_REGIONS")
+public class GeoRegions implements Serializable {
+	private static final long serialVersionUID = -1396605811093405057L;
 
 	@Id 
 	@Basic(optional = false)
 	@Column(name="ID")
-	private Long id;
-
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_AREA")
-	private GeoAreas geoArea;
-
+	private String id;
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_REGION", referencedColumnName="ID")
 	private List<UserRegion> userRegions;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_REGION", referencedColumnName="ID")
-	private List<GeoCountries> geoCountries;
+	private List<GeoCountries> countries;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="ID_AREA", referencedColumnName="ID")
+	private GeoAreas area;
 
 	@Column(name="DESCRIPTION_IT")
-	private String descriptionIT;
-
+	private String descriptionIt;
+	
 	@Column(name="DESCRIPTION_EN")
 	private String descriptionEn;
-
+	
 	@Column(name="DESCRIPTION_FR")
 	private String descriptionFr;
-
+	
 	@Column(name="DESCRIPTION_DE")
 	private String descriptionDe;
-
+	
 	@Column(name="DESCRIPTION_ES")
 	private String descriptionEs;
-
+	
 	@Column(name="DESCRIPTION_ZH")
 	private String descriptionZh;
-
+	
 	@Column(name="DESCRIPTION_JP")
 	private String descriptionJp;
-
+	
 	@Column(name="DATE_INS")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateIns;
-
+	
 	@Column(name="DATE_MOD")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateMod;
-
+	
 	@Column(name="USER_INS")
 	private String userIns;
-
+	
 	@Column(name="USER_MOD")
 	private String userMod;
-
+	
 	@Column(name="ACTIVE")
 	private String active;
+	
+	public GeoRegions(){}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-
-	public String getDescriptionIT() {
-		return descriptionIT;
+	
+	public List<GeoCountries> getCountries() {
+		return countries;
 	}
 
-	public void setDescriptionIT(String descriptionIT) {
-		this.descriptionIT = descriptionIT;
+	public void setCountries(List<GeoCountries> countries) {
+		this.countries = countries;
+	}
+
+	public GeoAreas getArea() {
+		return area;
+	}
+
+	public void setArea(GeoAreas geoArea) {
+		this.area = geoArea;
+	}
+
+	public String getDescriptionIt() {
+		return descriptionIt;
+	}
+
+	public void setDescriptionIt(String descriptionIt) {
+		this.descriptionIt = descriptionIt;
 	}
 
 	public String getDescriptionEn() {
@@ -144,7 +158,7 @@ public class GeoRegions implements Serializable{
 	public void setDescriptionJp(String descriptionJp) {
 		this.descriptionJp = descriptionJp;
 	}
-
+	
 	public Date getDateIns() {
 		return dateIns;
 	}
@@ -177,7 +191,7 @@ public class GeoRegions implements Serializable{
 		this.userMod = userMod;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		if(active.equals("Y")){
 			return true;
 		} else {
@@ -193,27 +207,11 @@ public class GeoRegions implements Serializable{
 		}
 	}
 
-	public GeoAreas getGeoArea() {
-		return geoArea;
-	}
-
-	public void setGeoArea(GeoAreas geoArea) {
-		this.geoArea = geoArea;
-	}
-
 	public List<UserRegion> getUserRegions() {
 		return userRegions;
 	}
 
 	public void setUserRegions(List<UserRegion> userRegions) {
 		this.userRegions = userRegions;
-	}
-
-	public List<GeoCountries> getGeoCountries() {
-		return geoCountries;
-	}
-
-	public void setGeoCountries(List<GeoCountries> geoCountries) {
-		this.geoCountries = geoCountries;
 	}
 }

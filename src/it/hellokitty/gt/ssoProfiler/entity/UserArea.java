@@ -32,7 +32,7 @@ public class UserArea extends BaseObject implements Serializable{
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_AREA")
-	private GeoAreas geoArea;
+	private GeoAreas area;
 
 	public UserArea() {}
 
@@ -44,12 +44,12 @@ public class UserArea extends BaseObject implements Serializable{
 		this.id = id;
 	}
 
-	public GeoAreas getGeoArea() {
-		return geoArea;
+	public GeoAreas getArea() {
+		return area;
 	}
 
-	public void setGeoArea(GeoAreas geoArea) {
-		this.geoArea = geoArea;
+	public void setGeoArea(GeoAreas area) {
+		this.area = area;
 	}
 
 	public User getUser() {
