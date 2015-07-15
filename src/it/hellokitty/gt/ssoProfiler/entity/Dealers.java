@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@Table(name="DEALERS")
+@Table(name="SSO_DEALERS")
 @NamedQuery(name="Dealers.findAll", query="SELECT d FROM Dealers d")
 public class Dealers implements Serializable {
 	private static final long serialVersionUID = -3548589032187394603L;
