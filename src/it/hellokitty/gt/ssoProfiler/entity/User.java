@@ -61,19 +61,19 @@ public class User extends BaseObject implements Serializable{
 	private List<Role> roles;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="USER_ID", referencedColumnName="ID")
+	@JoinColumn(name="ID_USER", referencedColumnName="ID")
 	private List<UserArea> userArea;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="USER_ID", referencedColumnName="ID")
+	@JoinColumn(name="ID_USER", referencedColumnName="ID")
 	private List<UserRegion> userRegion;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="USER_ID", referencedColumnName="ID")
+	@JoinColumn(name="ID_USER", referencedColumnName="ID")
 	private List<UserCountry> userCountry;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="USER_ID", referencedColumnName="ID")
+	@JoinColumn(name="ID_USER", referencedColumnName="ID")
 	private List<UserDealer> userDealer;
 
 	public User(){}

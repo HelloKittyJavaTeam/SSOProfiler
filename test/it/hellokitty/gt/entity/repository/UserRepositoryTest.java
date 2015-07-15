@@ -303,7 +303,7 @@ public class UserRepositoryTest {
 			userList = userRep.search(0, 20, null, null, null, null, map);
 			for(User user : userList){
 				if(user.getId() > 100){
-					fail("userSearch method failed on lowerEqual check. Id found: "+user.getId());
+					fail("userSearch method failed on greaterEqual check. Id found: "+user.getId());
 				}
 			}
 		} catch (Exception e){

@@ -303,7 +303,7 @@ public class ApplicationRepositoryTest{
 			applicationList = applicationRep.search(0, 20, null, null, null, null, map);
 			for(Application application : applicationList){
 				if(application.getId() > 100){
-					fail("applicationSearch method failed on lowerEqual check. Id found: "+application.getId());
+					fail("applicationSearch method failed on greaterEqual check. Id found: "+application.getId());
 				}
 			}
 		} catch (Exception e){

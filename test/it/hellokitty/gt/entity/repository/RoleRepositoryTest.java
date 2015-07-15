@@ -303,7 +303,7 @@ public class RoleRepositoryTest {
 			roleList = roleRep.search(0, 20, null, null, null, null, map);
 			for(Role role : roleList){
 				if(role.getId() > 100){
-					fail("roleSearch method failed on lowerEqual check. Id found: "+role.getId());
+					fail("roleSearch method failed on greaterEqual check. Id found: "+role.getId());
 				}
 			}
 		} catch (Exception e){
