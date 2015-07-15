@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+  	<persistence-unit name="SSOPROFILER_PU" transaction-type="RESOURCE_LOCAL">
+  		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+  		<jta-data-source>SSOPROFILER_PU</jta-data-source>
+		<class>it.ferrari.gt.bulletin.entity.Application</class>
+        <class>it.ferrari.gt.bulletin.entity.CompanyRole</class>
+        <class>it.ferrari.gt.bulletin.entity.Dealers</class>
+        <class>it.ferrari.gt.bulletin.entity.GeoAreas</class>
+        <class>it.ferrari.gt.bulletin.entity.GeoCountries</class>
+        <class>it.ferrari.gt.bulletin.entity.GeoRegions</class>
+        <class>it.ferrari.gt.bulletin.entity.Role</class>
+        <class>it.ferrari.gt.bulletin.entity.User</class>
+        <class>it.ferrari.gt.bulletin.entity.UserArea</class>
+        <class>it.ferrari.gt.bulletin.entity.UserCountry</class>
+        <class>it.ferrari.gt.bulletin.entity.UserDealer</class>
+        <class>it.ferrari.gt.bulletin.entity.UserRegion</class>
+  		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+  		<properties>
+  			<property name="javax.persistence.jdbc.url" 	 value="jdbc:oracle:thin:@localhost:1521/orcl" />
+    		<property name="javax.persistence.jdbc.driver" 	 value="oracle.jdbc.OracleDriver" />
+    		<property name="javax.persistence.jdbc.user" 	 value="Bulletin" />
+    		<property name="javax.persistence.jdbc.password" value="bulletin" />
+    		<property name="eclipselink.ddl-generation" 	 value="create-or-extend-tables"/>
+    		<property name="eclipselink.logging.file" 		 value="output.log"/>
+    		<property name="eclipselink.logging.level.sql" 	value="FINE"/>
+    		<property name="eclipselink.logging.parameters" value="true"/>
+  		</properties>
+	</persistence-unit>
+</persistence>
