@@ -12,31 +12,44 @@ import java.util.List;
 public class GeoCountriesServiceImpl implements GeoCountriesService{
 	GeoCountriesRepository geoCountriesRepository = new GeoCountriesRepositoryImpl();
 
+	public GeoCountriesServiceImpl(){
+		super();
+	}
+	
 	@Override
 	public Long count() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return geoCountriesRepository.count();
 	}
 
 	@Override
-	public Long count(HashMap<String, Object> arg0,
-			HashMap<String, Object> arg1, HashMap<String, Object> arg2,
-			HashMap<String, Object> arg3) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Long count(HashMap<String, Object> paramEquals, HashMap<String,Object> paramLike, HashMap<String,Object> paramGE, HashMap<String,Object> paramLE) throws IllegalArgumentException, Exception {
+		if(paramEquals == null){
+			throw new IllegalArgumentException(this.getClass().getPackage() + " - "+ this.getClass()+" - paramEquals parameter cannot be null.");
+		}
+		
+		if(paramLike == null){
+			throw new IllegalArgumentException(this.getClass().getPackage() + " - "+ this.getClass()+" - paramLike parameter cannot be null.");
+		}
+		
+		if(paramGE == null){
+			throw new IllegalArgumentException(this.getClass().getPackage() + " - "+ this.getClass()+" - paramGE parameter cannot be null.");
+		}
+		
+		if(paramLE == null){
+			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+ this.getClass()+" - paramLE parameter cannot be null.");
+		}
+		
+		return geoCountriesRepository.count(paramEquals, paramLike, paramGE, paramLE);
 	}
 
 	@Override
-	public List<GeoCountries> fetchAll(Integer arg0, Integer arg1,
-			LinkedHashMap<String, String> arg2) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<GeoCountries> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws IllegalArgumentException, Exception {
+		return geoCountriesRepository.fetchAll(start, limit, orderColumn);
 	}
 
 	@Override
-	public GeoCountries fetchById(Object arg0) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public GeoCountries fetchById(Object id) throws Exception {
+		return geoCountriesRepository.fetchById(id);
 	}
 
 	@Override
@@ -44,9 +57,6 @@ public class GeoCountriesServiceImpl implements GeoCountriesService{
 			LinkedHashMap<String, String> arg2, HashMap<String, Object> arg3,
 			HashMap<String, Object> arg4, HashMap<String, Object> arg5,
 			HashMap<String, Object> arg6) {
-		// TODO Auto-generated method stub
-		return null;
+		return geoCountriesRepository.search(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 	}
-
 }
-
