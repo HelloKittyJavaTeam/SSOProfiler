@@ -2,7 +2,7 @@ package it.hellokitty.gt.ssoprofiler.service.impl;
 
 import it.hellokitty.gt.ssoprofiler.entity.Dealers;
 import it.hellokitty.gt.ssoprofiler.repository.DealersRepository;
-import it.hellokitty.gt.ssoprofiler.repository.repositoryImpl.DealersRepositoryImpl;
+import it.hellokitty.gt.ssoprofiler.repository.impl.DealersRepositoryImpl;
 import it.hellokitty.gt.ssoprofiler.service.DealersService;
 
 import java.util.HashMap;

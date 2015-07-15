@@ -3,7 +3,7 @@ package it.hellokitty.gt.ssoprofiler.service.impl;
 import it.hellokitty.gt.entity.BaseObject;
 import it.hellokitty.gt.ssoprofiler.entity.CompanyRole;
 import it.hellokitty.gt.ssoprofiler.repository.CompanyRoleRepository;
-import it.hellokitty.gt.ssoprofiler.repository.repositoryImpl.CompanyRoleRepositoryImpl;
+import it.hellokitty.gt.ssoprofiler.repository.impl.CompanyRoleRepositoryImpl;
 import it.hellokitty.gt.ssoprofiler.service.CompanyRoleService;
 
 import java.util.HashMap;

@@ -5,8 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import it.hellokitty.gt.ssoProfiler.entity.User;
-import it.hellokitty.gt.ssoProfiler.repository.repositoryImpl.UserRepositoryImpl;
+import it.hellokitty.gt.ssoprofiler.entity.User;
+import it.hellokitty.gt.ssoprofiler.repository.impl.UserRepositoryImpl;
 
 import java.util.ArrayList;
 import java.util.Date;

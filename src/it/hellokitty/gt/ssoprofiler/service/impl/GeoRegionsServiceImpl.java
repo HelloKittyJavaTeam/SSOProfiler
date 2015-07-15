@@ -2,7 +2,7 @@ package it.hellokitty.gt.ssoprofiler.service.impl;
 
 import it.hellokitty.gt.ssoprofiler.entity.GeoRegions;
 import it.hellokitty.gt.ssoprofiler.repository.GeoRegionsRepository;
-import it.hellokitty.gt.ssoprofiler.repository.repositoryImpl.GeoRegionsRepositoryImpl;
+import it.hellokitty.gt.ssoprofiler.repository.impl.GeoRegionsRepositoryImpl;
 import it.hellokitty.gt.ssoprofiler.service.GeoRegionsService;
 
 import java.util.HashMap;
