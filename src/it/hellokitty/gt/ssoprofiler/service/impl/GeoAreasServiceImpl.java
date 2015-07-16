@@ -11,17 +11,24 @@ import java.util.List;
 
 public class GeoAreasServiceImpl implements GeoAreasService{
 	GeoAreasRepository geoAreasRepository = new GeoAreasRepositoryImpl();
+	private static GeoAreasServiceImpl geoAreasServiceImpl;
 
-	public GeoAreasServiceImpl(){
+	private GeoAreasServiceImpl() {
 		super();
 	}
 	
-	@Override
+	public static GeoAreasServiceImpl getInstance(){
+		if(geoAreasServiceImpl == null){
+			geoAreasServiceImpl = new GeoAreasServiceImpl();
+		}
+		return geoAreasServiceImpl;
+	}
+	
 	public Long count() throws Exception {
 		return geoAreasRepository.count();
 	}
 
-	@Override
+	
 	public Long count(HashMap<String, Object> paramEquals, HashMap<String,Object> paramLike, HashMap<String,Object> paramGE, HashMap<String,Object> paramLE) throws IllegalArgumentException, Exception {
 		if(paramEquals == null){
 			throw new IllegalArgumentException(this.getClass().getPackage() + " - "+ this.getClass()+" - paramEquals parameter cannot be null.");
@@ -42,17 +49,17 @@ public class GeoAreasServiceImpl implements GeoAreasService{
 		return geoAreasRepository.count(paramEquals, paramLike, paramGE, paramLE);
 	}
 
-	@Override
+	
 	public List<GeoAreas> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws IllegalArgumentException, Exception {
 		return geoAreasRepository.fetchAll(start, limit, orderColumn);
 	}
 
-	@Override
+	
 	public GeoAreas fetchById(Object id) throws Exception {
 		return geoAreasRepository.fetchById(id);
 	}
 
-	@Override
+	
 	public List<GeoAreas> search(Integer arg0, Integer arg1,
 			LinkedHashMap<String, String> arg2, HashMap<String, Object> arg3,
 			HashMap<String, Object> arg4, HashMap<String, Object> arg5,

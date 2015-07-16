@@ -35,7 +35,7 @@ public class RoleRepositoryTest {
 		for(int i = 0; i < 20; i++){
 			roleAdd = new Role();
 			roleAdd.setId(99999l+i);
-			roleAdd.setUserCreated("testADD"+i);
+			roleAdd.setUserCreate("testADD"+i);
 			roleAdd.setCreateDate(new Date());
 			roleAdd.setName("NAMETEST "+i);
 			roleAdd.setActive(true);
@@ -161,7 +161,7 @@ public class RoleRepositoryTest {
 		try{
 			bullToMerge = new Role();
 			bullToMerge.setId(9898989898l);
-			bullToMerge.setUserCreated("test");
+			bullToMerge.setUserCreate("test");
 			bullToMerge.setName("NAME TEST");
 			roleRep.merge(bullToMerge, "testMERGE");
 			assertNotNull("roleMerge method fail. No element added.", em.find(Role.class, 9898989898l));
@@ -195,7 +195,7 @@ public class RoleRepositoryTest {
 	public void roleCount(){
 		Long result;
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("userCreated", "testADD0");
+		map.put("userCreate", "testADD0");
 		
 		try{
 			result = roleRep.count(map, null, null, null);
@@ -205,7 +205,7 @@ public class RoleRepositoryTest {
 		}
 		
 		map = new HashMap<String, Object>();
-		map.put("userCreated", "testADDUNKNOW");
+		map.put("userCreate", "testADDUNKNOW");
 		
 		try{
 			result = roleRep.count(map, null, null, null);
@@ -215,7 +215,7 @@ public class RoleRepositoryTest {
 		}
 		
 		map = new HashMap<String, Object>();
-		map.put("userCreated", "testADD");
+		map.put("userCreate", "testADD");
 		
 		try{
 			result = roleRep.count(null, map, null, null);

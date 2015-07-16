@@ -12,9 +12,19 @@ import java.util.List;
 
 public class RoleServiceImpl implements RoleService{
 	RoleRepository roleRepository = new RoleRepositoryImpl();
+	private static RoleServiceImpl roleServiceImpl;
 
-
-	@Override
+	private RoleServiceImpl() {
+		super();
+	}
+	
+	public static RoleServiceImpl getInstance(){
+		if(roleServiceImpl == null){
+			roleServiceImpl = new RoleServiceImpl();
+		}
+		return roleServiceImpl;
+	}
+	
 	public List<Role> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> cdList, String user) throws IllegalArgumentException, Exception {
 		if(user == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - user parameter can't be null.");
@@ -47,7 +57,7 @@ public class RoleServiceImpl implements RoleService{
 		return roleRepository.fetchAll(start, limit, cdList, user);
 	}
 
-	@Override
+	
 	public void insert(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -64,7 +74,7 @@ public class RoleServiceImpl implements RoleService{
 		roleRepository.insert(elem, user);
 	}
 
-	@Override
+	
 	public void delete(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -81,7 +91,7 @@ public class RoleServiceImpl implements RoleService{
 		roleRepository.delete(elem, user);
 	}
 
-	@Override
+	
 	public BaseObject merge(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -99,27 +109,27 @@ public class RoleServiceImpl implements RoleService{
 		return roleRepository.merge(elem, user);
 	}
 
-	@Override
+	
 	public Long count() throws Exception {
 		return roleRepository.count();
 	}
 
-	@Override
+	
 	public Long count(HashMap<String,Object> paramEquals, HashMap<String,Object> paramLike, HashMap<String,Object> paramGE, HashMap<String,Object> paramLE) throws Exception {
 		return roleRepository.count(paramEquals, paramLike, paramGE, paramLE);
 	}
 
-	@Override
+	
 	public List<Role> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws Exception {
 		return roleRepository.fetchAll(start, limit, orderColumn);
 	}
 
-	@Override
+	
 	public Role fetchById(Object id) throws Exception {
 		return roleRepository.fetchById(id);
 	}
 
-	@Override
+	
 	public List<Role> search(Integer start, Integer limit, 
 			LinkedHashMap<String,String> orderColumn,
 			HashMap<String,Object> paramEquals,

@@ -46,7 +46,7 @@ public class Role extends BaseObject implements Serializable{
 	@JoinTable(name="SSO_USER_ROLE",
 			joinColumns=@JoinColumn(name="ID_ROLE"),
 			inverseJoinColumns=@JoinColumn(name="ID_USER"))
-	private List<User> users;
+	private List<AdUsers> users;
 
 	public Role() {}
 
@@ -74,11 +74,11 @@ public class Role extends BaseObject implements Serializable{
 		this.application = application;
 	}
 
-	public List<User> getUsers() {
+	public List<AdUsers> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(List<AdUsers> users) {
 		this.users = users;
 	}
 }

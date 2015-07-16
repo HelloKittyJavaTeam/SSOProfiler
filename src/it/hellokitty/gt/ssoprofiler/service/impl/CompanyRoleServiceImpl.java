@@ -12,12 +12,19 @@ import java.util.List;
 
 public class CompanyRoleServiceImpl implements CompanyRoleService{
 	CompanyRoleRepository companyRoleRepository = new CompanyRoleRepositoryImpl();
+	private static CompanyRoleServiceImpl companyRoleServiceImpl;
 
-	public CompanyRoleServiceImpl() {
+	private CompanyRoleServiceImpl() {
 		super();
 	}
 	
-	@Override
+	public static CompanyRoleServiceImpl getInstance(){
+		if(companyRoleServiceImpl == null){
+			companyRoleServiceImpl = new CompanyRoleServiceImpl();
+		}
+		return companyRoleServiceImpl;
+	}
+	
 	public List<CompanyRole> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> cdList, String user) throws IllegalArgumentException, Exception {
 		if(user == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - user parameter can't be null.");
@@ -50,7 +57,7 @@ public class CompanyRoleServiceImpl implements CompanyRoleService{
 		return companyRoleRepository.fetchAll(start, limit, cdList, user);
 	}
 
-	@Override
+	
 	public void insert(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -67,7 +74,7 @@ public class CompanyRoleServiceImpl implements CompanyRoleService{
 		companyRoleRepository.insert(elem, user);
 	}
 
-	@Override
+	
 	public void delete(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -84,7 +91,7 @@ public class CompanyRoleServiceImpl implements CompanyRoleService{
 		companyRoleRepository.delete(elem, user);
 	}
 
-	@Override
+	
 	public BaseObject merge(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -102,27 +109,27 @@ public class CompanyRoleServiceImpl implements CompanyRoleService{
 		return companyRoleRepository.merge(elem, user);
 	}
 
-	@Override
+	
 	public Long count() throws Exception {
 		return companyRoleRepository.count();
 	}
 
-	@Override
+	
 	public Long count(HashMap<String,Object> paramEquals, HashMap<String,Object> paramLike, HashMap<String,Object> paramGE, HashMap<String,Object> paramLE) throws Exception {
 		return companyRoleRepository.count(paramEquals, paramLike, paramGE, paramLE);
 	}
 
-	@Override
+	
 	public List<CompanyRole> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws Exception {
 		return companyRoleRepository.fetchAll(start, limit, orderColumn);
 	}
 
-	@Override
+	
 	public CompanyRole fetchById(Object id) throws Exception {
 		return companyRoleRepository.fetchById(id);
 	}
 
-	@Override
+	
 	public List<CompanyRole> search(Integer start, Integer limit, 
 			LinkedHashMap<String,String> orderColumn,
 			HashMap<String,Object> paramEquals,

@@ -11,17 +11,24 @@ import java.util.List;
 
 public class GeoRegionsServiceImpl implements GeoRegionsService{
 	GeoRegionsRepository geoRegionsRepository = new GeoRegionsRepositoryImpl();
-	
-	public GeoRegionsServiceImpl(){
+	private static GeoRegionsServiceImpl geoRegionsServiceImpl;
+
+	private GeoRegionsServiceImpl() {
 		super();
 	}
 	
-	@Override
+	public static GeoRegionsServiceImpl getInstance(){
+		if(geoRegionsServiceImpl == null){
+			geoRegionsServiceImpl = new GeoRegionsServiceImpl();
+		}
+		return geoRegionsServiceImpl;
+	}
+	
 	public Long count() throws Exception {
 		return geoRegionsRepository.count();
 	}
 
-	@Override
+	
 	public Long count(HashMap<String, Object> paramEquals, HashMap<String,Object> paramLike, HashMap<String,Object> paramGE, HashMap<String,Object> paramLE) throws IllegalArgumentException, Exception {
 		if(paramEquals == null){
 			throw new IllegalArgumentException(this.getClass().getPackage() + " - "+ this.getClass()+" - paramEquals parameter cannot be null.");
@@ -42,17 +49,17 @@ public class GeoRegionsServiceImpl implements GeoRegionsService{
 		return geoRegionsRepository.count(paramEquals, paramLike, paramGE, paramLE);
 	}
 
-	@Override
+	
 	public List<GeoRegions> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws IllegalArgumentException, Exception {
 		return geoRegionsRepository.fetchAll(start, limit, orderColumn);
 	}
 
-	@Override
+	
 	public GeoRegions fetchById(Object id) throws Exception {
 		return geoRegionsRepository.fetchById(id);
 	}
 
-	@Override
+	
 	public List<GeoRegions> search(Integer arg0, Integer arg1,
 			LinkedHashMap<String, String> arg2, HashMap<String, Object> arg3,
 			HashMap<String, Object> arg4, HashMap<String, Object> arg5,

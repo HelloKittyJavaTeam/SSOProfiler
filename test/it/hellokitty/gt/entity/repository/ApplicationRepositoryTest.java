@@ -35,7 +35,7 @@ public class ApplicationRepositoryTest{
 		for(int i = 0; i < 20; i++){
 			applicationAdd = new Application();
 			applicationAdd.setId(99999l+i);
-			applicationAdd.setUserCreated("testADD"+i);
+			applicationAdd.setUserCreate("testADD"+i);
 			applicationAdd.setCreateDate(new Date());
 			applicationAdd.setName("NAMETEST "+i);
 			applicationAdd.setActive(true);
@@ -161,7 +161,7 @@ public class ApplicationRepositoryTest{
 		try{
 			bullToMerge = new Application();
 			bullToMerge.setId(9898989898l);
-			bullToMerge.setUserCreated("test");
+			bullToMerge.setUserCreate("test");
 			bullToMerge.setName("NAME TEST");
 			applicationRep.merge(bullToMerge, "testMERGE");
 			assertNotNull("applicationMerge method fail. No element added.", em.find(Application.class, 9898989898l));
@@ -195,7 +195,7 @@ public class ApplicationRepositoryTest{
 	public void applicationCount(){
 		Long result;
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("userCreated", "testADD0");
+		map.put("userCreate", "testADD0");
 		
 		try{
 			result = applicationRep.count(map, null, null, null);
@@ -205,7 +205,7 @@ public class ApplicationRepositoryTest{
 		}
 		
 		map = new HashMap<String, Object>();
-		map.put("userCreated", "testADDUNKNOW");
+		map.put("userCreate", "testADDUNKNOW");
 		
 		try{
 			result = applicationRep.count(map, null, null, null);
@@ -215,7 +215,7 @@ public class ApplicationRepositoryTest{
 		}
 		
 		map = new HashMap<String, Object>();
-		map.put("userCreated", "testADD");
+		map.put("userCreate", "testADD");
 		
 		try{
 			result = applicationRep.count(null, map, null, null);

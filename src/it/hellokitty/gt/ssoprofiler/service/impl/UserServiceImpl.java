@@ -1,7 +1,7 @@
 package it.hellokitty.gt.ssoprofiler.service.impl;
 
 import it.hellokitty.gt.entity.BaseObject;
-import it.hellokitty.gt.ssoprofiler.entity.User;
+import it.hellokitty.gt.ssoprofiler.entity.AdUsers;
 import it.hellokitty.gt.ssoprofiler.repository.UserRepository;
 import it.hellokitty.gt.ssoprofiler.repository.impl.UserRepositoryImpl;
 import it.hellokitty.gt.ssoprofiler.service.UserService;
@@ -12,10 +12,20 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService{
 	UserRepository userRepository = new UserRepositoryImpl();
+	private static UserServiceImpl userServiceImpl;
 
-
-	@Override
-	public List<User> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> cdList, String user) throws IllegalArgumentException, Exception {
+	private UserServiceImpl() {
+		super();
+	}
+	
+	public static UserServiceImpl getInstance(){
+		if(userServiceImpl == null){
+			userServiceImpl = new UserServiceImpl();
+		}
+		return userServiceImpl;
+	}
+	
+	public List<AdUsers> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> cdList, String user) throws IllegalArgumentException, Exception {
 		if(user == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - user parameter can't be null.");
 		}
@@ -47,7 +57,7 @@ public class UserServiceImpl implements UserService{
 		return userRepository.fetchAll(start, limit, cdList, user);
 	}
 
-	@Override
+	
 	public void insert(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -64,7 +74,7 @@ public class UserServiceImpl implements UserService{
 		userRepository.insert(elem, user);
 	}
 
-	@Override
+	
 	public void delete(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -81,7 +91,7 @@ public class UserServiceImpl implements UserService{
 		userRepository.delete(elem, user);
 	}
 
-	@Override
+	
 	public BaseObject merge(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -99,28 +109,28 @@ public class UserServiceImpl implements UserService{
 		return userRepository.merge(elem, user);
 	}
 
-	@Override
+	
 	public Long count() throws Exception {
 		return userRepository.count();
 	}
 
-	@Override
+	
 	public Long count(HashMap<String,Object> paramEquals, HashMap<String,Object> paramLike, HashMap<String,Object> paramGE, HashMap<String,Object> paramLE) throws Exception {
 		return userRepository.count(paramEquals, paramLike, paramGE, paramLE);
 	}
 
-	@Override
-	public List<User> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws Exception {
+	
+	public List<AdUsers> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws Exception {
 		return userRepository.fetchAll(start, limit, orderColumn);
 	}
 
-	@Override
-	public User fetchById(Object id) throws Exception {
+	
+	public AdUsers fetchById(Object id) throws Exception {
 		return userRepository.fetchById(id);
 	}
 
-	@Override
-	public List<User> search(Integer start, Integer limit, 
+	
+	public List<AdUsers> search(Integer start, Integer limit, 
 			LinkedHashMap<String,String> orderColumn,
 			HashMap<String,Object> paramEquals,
 			HashMap<String,Object> paramLike,

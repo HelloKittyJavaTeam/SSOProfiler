@@ -1,5 +1,6 @@
 package it.hellokitty.gt.ssoprofiler.service.impl;
 
+import it.hellokitty.gt.ssoprofiler.service.impl.ApplicationServiceImpl;
 import it.hellokitty.gt.entity.BaseObject;
 import it.hellokitty.gt.ssoprofiler.entity.Application;
 import it.hellokitty.gt.ssoprofiler.repository.ApplicationRepository;
@@ -12,12 +13,19 @@ import java.util.List;
 
 public class ApplicationServiceImpl implements ApplicationService{
 	ApplicationRepository applicationRepository = new ApplicationRepositoryImpl();
+	private static ApplicationServiceImpl applicationServiceImpl;
 
-	public ApplicationServiceImpl() {
+	private ApplicationServiceImpl() {
 		super();
 	}
 	
-	@Override
+	public static ApplicationServiceImpl getInstance(){
+		if(applicationServiceImpl == null){
+			applicationServiceImpl = new ApplicationServiceImpl();
+		}
+		return applicationServiceImpl;
+	}
+	
 	public List<Application> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> cdList, String user) throws IllegalArgumentException, Exception {
 		if(user == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - user parameter can't be null.");
@@ -50,7 +58,7 @@ public class ApplicationServiceImpl implements ApplicationService{
 		return applicationRepository.fetchAll(start, limit, cdList, user);
 	}
 
-	@Override
+	
 	public void insert(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -67,7 +75,7 @@ public class ApplicationServiceImpl implements ApplicationService{
 		applicationRepository.insert(elem, user);
 	}
 
-	@Override
+	
 	public void delete(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -84,7 +92,7 @@ public class ApplicationServiceImpl implements ApplicationService{
 		applicationRepository.delete(elem, user);
 	}
 
-	@Override
+	
 	public BaseObject merge(BaseObject elem, String user) throws IllegalArgumentException, Exception {
 		if(elem == null){
 			throw new IllegalArgumentException(this.getClass().getPackage()+" - "+this.getClass()+" - elem parameter can't be null.");
@@ -102,27 +110,27 @@ public class ApplicationServiceImpl implements ApplicationService{
 		return applicationRepository.merge(elem, user);
 	}
 
-	@Override
+	
 	public Long count() throws Exception {
 		return applicationRepository.count();
 	}
 
-	@Override
+	
 	public Long count(HashMap<String,Object> paramEquals, HashMap<String,Object> paramLike, HashMap<String,Object> paramGE, HashMap<String,Object> paramLE) throws Exception {
 		return applicationRepository.count(paramEquals, paramLike, paramGE, paramLE);
 	}
 
-	@Override
+	
 	public List<Application> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws Exception {
 		return applicationRepository.fetchAll(start, limit, orderColumn);
 	}
 
-	@Override
+	
 	public Application fetchById(Object id) throws Exception {
 		return applicationRepository.fetchById(id);
 	}
 
-	@Override
+	
 	public List<Application> search(Integer start, Integer limit, 
 			LinkedHashMap<String,String> orderColumn,
 			HashMap<String,Object> paramEquals,
