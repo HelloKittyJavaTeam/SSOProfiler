@@ -1,4 +1,4 @@
 package it.hellokitty.gt.ssoprofiler.service;
 
 
-public interface UserService{}
+public interface AdUserService{}

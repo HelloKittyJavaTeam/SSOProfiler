@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import it.hellokitty.gt.ssoprofiler.entity.AdUsers;
-import it.hellokitty.gt.ssoprofiler.repository.impl.UserRepositoryImpl;
+import it.hellokitty.gt.ssoprofiler.repository.impl.AdUserRepositoryImpl;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +22,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class UserRepositoryTest {
-	private UserRepositoryImpl userRep = new UserRepositoryImpl();
+	private AdUserRepositoryImpl userRep = new AdUserRepositoryImpl();
 	private static EntityManager em = Persistence.createEntityManagerFactory("SSOPROFILER_PU").createEntityManager();
 	private static AdUsers userAdd;
 

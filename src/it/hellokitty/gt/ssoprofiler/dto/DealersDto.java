@@ -1,45 +1,22 @@
-package it.hellokitty.gt.ssoprofiler.entity;
+package it.hellokitty.gt.ssoprofiler.dto;
+
+import it.hellokitty.gt.ssoprofiler.entity.Dealers;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-
 /**
- * The persistent class for the DEALERS database table.
- * 
+ * The DTO class of Dealers entity 
+ *
  */
-@Entity
-@Table(name="SSO_DEALERS")
-@NamedQuery(name="Dealers.findAll", query="SELECT d FROM Dealers d")
-public class Dealers implements Serializable {
-	private static final long serialVersionUID = -3548589032187394603L;
+public class DealersDto implements Serializable {
+	private static final long serialVersionUID = -9223143478607955426L;
 
-	@Id
 	private String id;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_DEALER", referencedColumnName="ID")
-	private List<UserDealer> userDealers;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="COUNTRY_CODE", referencedColumnName="ID_ISO3166")
-	private GeoCountries country;
-
 	private String active;
 
 	private String address;
@@ -48,79 +25,54 @@ public class Dealers implements Serializable {
 
 	private String complement;
 
-	@Column(name="DATE_INS")
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateIns;
 
-	@Column(name="DATE_MOD")
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateMod;
 
-	@Column(name="DEALER_TYPE")
 	private String dealerType;
 
 	private String email;
 
 	private String fax;
 
-	@Column(name="FLAG_AFTERMARKET")
 	private String flagAftermarket;
 
-	@Column(name="FLAG_ALLUMINIUM")
 	private String flagAlluminium;
 
-	@Column(name="FLAG_ASSISTANCE")
 	private String flagAssistance;
 
-	@Column(name="FLAG_BODYSHOP")
 	private String flagBodyshop;
 
-	@Column(name="FLAG_DEALER")
 	private String flagDealer;
 
-	@Column(name="FLAG_DEALERSELECTION")
 	private String flagDealerselection;
 
-	@Column(name="FLAG_EUROPEASS")
 	private String flagEuropeass;
 
-	@Column(name="FLAG_FLAGSHIP")
 	private String flagFlagship;
 
-	@Column(name="FLAG_HVR")
 	private String flagHvr;
 
-	@Column(name="FLAG_IMPORTER")
 	private String flagImporter;
 
-	@Column(name="FLAG_PDICENTER")
 	private String flagPdicenter;
 
-	@Column(name="FLAG_POS")
 	private String flagPos;
 
-	@Column(name="FLAG_REGIONALOFFICE")
 	private String flagRegionaloffice;
 
-	@Column(name="FLAG_REGIONALOFFICE_SUBSIDIARY")
 	private String flagRegionalofficeSubsidiary;
 
-	@Column(name="FLAG_SHOWROOM")
 	private String flagShowroom;
 
-	@Column(name="FLAG_SUBDEALER")
 	private String flagSubdealer;
 
-	@Column(name="FLAG_SUBSIDIARY")
 	private String flagSubsidiary;
 
-	@Column(name="GL_LATITUDE")
 	private BigDecimal glLatitude;
 
-	@Column(name="GL_LONGITUDE")
 	private BigDecimal glLongitude;
 
-	@Column(name="HOUSE_NUMBER")
 	private String houseNumber;
 
 	private String name;
@@ -129,31 +81,22 @@ public class Dealers implements Serializable {
 
 	private String province;
 
-	@Column(name="PROVINCE_CODE")
 	private String provinceCode;
 
-	@Column(name="SW_ENABLED")
 	private String swEnabled;
 
-	@Column(name="SW_HEADING")
 	private BigDecimal swHeading;
 
-	@Column(name="SW_LATITUDE")
 	private BigDecimal swLatitude;
 
-	@Column(name="SW_LONGITUDE")
 	private BigDecimal swLongitude;
 
-	@Column(name="SW_PITCH")
 	private BigDecimal swPitch;
 
-	@Column(name="SW_ZOOM")
 	private BigDecimal swZoom;
 
-	@Column(name="USER_INS")
 	private String userIns;
 
-	@Column(name="USER_MOD")
 	private String userMod;
 
 	private String village;
@@ -162,7 +105,7 @@ public class Dealers implements Serializable {
 
 	private String zipcode;
 
-	public Dealers() {
+	public DealersDto() {
 	}
 
 	public String getId() {
@@ -533,19 +476,75 @@ public class Dealers implements Serializable {
 		this.zipcode = zipcode;
 	}
 
-	public List<UserDealer> getUserDealers() {
-		return userDealers;
-	}
+	/**
+	 * This method returns an DealersDto of the dealers input parameter
+	 * 
+	 * @param dealers
+	 * @return DealersDto
+	 */
+	public static DealersDto from( final Dealers dealers ) {
+		DealersDto dto = new DealersDto();	
+		dto.setId(dealers.getId());
+		dto.setAddress(dealers.getAddress());
+		dto.setActive(dealers.isActive());
+		dto.setCity(dealers.getCity());
+		dto.setComplement(dealers.getComplement());
+		dto.setDateIns(dealers.getDateIns());
+		dto.setDateMod(dealers.getDateMod());
+		dto.setDealerType(dealers.getDealerType());
+		dto.setEmail(dealers.getEmail());
+		dto.setFax(dealers.getFax());
+		dto.setFlagAftermarket(dealers.getFlagAftermarket());
+		dto.setFlagAlluminium(dealers.getFlagAlluminium());
+		dto.setFlagAssistance(dealers.getFlagAssistance());
+		dto.setFlagBodyshop(dealers.getFlagBodyshop());
+		dto.setFlagDealer(dealers.getFlagDealer());
+		dto.setFlagDealerselection(dealers.getFlagDealerselection());
+		dto.setFlagEuropeass(dealers.getFlagEuropeass());
+		dto.setFlagFlagship(dealers.getFlagFlagship());
+		dto.setFlagHvr(dealers.getFlagHvr());
+		dto.setFlagImporter(dealers.getFlagImporter());
+		dto.setFlagPdicenter(dealers.getFlagPdicenter());
+		dto.setFlagPos(dealers.getFlagPos());
+		dto.setFlagRegionaloffice(dealers.getFlagRegionaloffice());
+		dto.setFlagRegionalofficeSubsidiary(dealers.getFlagRegionalofficeSubsidiary());
+		dto.setFlagShowroom(dealers.getFlagShowroom());
+		dto.setFlagSubdealer(dealers.getFlagSubdealer());
+		dto.setFlagSubsidiary(dealers.getFlagSubsidiary());
+		dto.setGlLatitude(dealers.getGlLatitude());
+		dto.setGlLongitude(dealers.getGlLongitude());
+		dto.setHouseNumber(dealers.getHouseNumber());
+		dto.setName(dealers.getName());
+		dto.setPhone(dealers.getPhone());
+		dto.setProvince(dealers.getProvince());
+		dto.setProvinceCode(dealers.getProvinceCode());
+		dto.setSwEnabled(dealers.getSwEnabled());
+		dto.setSwHeading(dealers.getSwHeading());
+		dto.setSwLatitude(dealers.getSwLatitude());
+		dto.setSwLongitude(dealers.getSwLongitude());
+		dto.setSwPitch(dealers.getSwPitch());
+		dto.setSwZoom(dealers.getSwZoom());
+		dto.setUserIns(dealers.getUserIns());
+		dto.setUserMod(dealers.getUserMod());
+		dto.setVillage(dealers.getVillage());
+		dto.setWebsite(dealers.getWebsite());
+		dto.setZipcode(dealers.getZipcode());
 
-	public void setUserDealers(List<UserDealer> userDealers) {
-		this.userDealers = userDealers;
+		return dto;
 	}
 	
-	public GeoCountries getCountry() {
-		return country;
+	/**
+	 * This method returns a List of DealersDto of the List of dealerList input parameter
+	 * 
+	 * @param dealerList List
+	 * @return DealersDto List
+	 */
+	public static List<DealersDto> from( final List<Dealers> dealerList ) {
+		final List<DealersDto> dealersListDto = new LinkedList<DealersDto>();
+		for ( final Dealers dealer : dealerList ) {
+			dealersListDto.add( from( dealer ) );
+		}
+		return dealersListDto;
 	}
 
-	public void setCountry(GeoCountries country) {
-		this.country = country;
-	}
 }

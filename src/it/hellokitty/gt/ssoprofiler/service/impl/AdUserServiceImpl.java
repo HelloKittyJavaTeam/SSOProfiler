@@ -2,25 +2,25 @@ package it.hellokitty.gt.ssoprofiler.service.impl;
 
 import it.hellokitty.gt.entity.BaseObject;
 import it.hellokitty.gt.ssoprofiler.entity.AdUsers;
-import it.hellokitty.gt.ssoprofiler.repository.UserRepository;
-import it.hellokitty.gt.ssoprofiler.repository.impl.UserRepositoryImpl;
-import it.hellokitty.gt.ssoprofiler.service.UserService;
+import it.hellokitty.gt.ssoprofiler.repository.AdUserRepository;
+import it.hellokitty.gt.ssoprofiler.repository.impl.AdUserRepositoryImpl;
+import it.hellokitty.gt.ssoprofiler.service.AdUserService;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class UserServiceImpl implements UserService{
-	UserRepository userRepository = new UserRepositoryImpl();
-	private static UserServiceImpl userServiceImpl;
+public class AdUserServiceImpl implements AdUserService{
+	AdUserRepository userRepository = new AdUserRepositoryImpl();
+	private static AdUserServiceImpl userServiceImpl;
 
-	private UserServiceImpl() {
+	private AdUserServiceImpl() {
 		super();
 	}
 	
-	public static UserServiceImpl getInstance(){
+	public static AdUserServiceImpl getInstance(){
 		if(userServiceImpl == null){
-			userServiceImpl = new UserServiceImpl();
+			userServiceImpl = new AdUserServiceImpl();
 		}
 		return userServiceImpl;
 	}
