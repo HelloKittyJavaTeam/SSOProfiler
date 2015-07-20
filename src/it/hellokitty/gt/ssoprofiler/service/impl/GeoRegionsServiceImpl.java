@@ -51,12 +51,12 @@ public class GeoRegionsServiceImpl implements GeoRegionsService{
 
 	
 	public List<GeoRegions> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws IllegalArgumentException, Exception {
-		return geoRegionsRepository.fetchAll(start, limit, orderColumn);
+		return geoRegionsRepository.getAll(start, limit, orderColumn);
 	}
 
 	
 	public GeoRegions fetchById(Object id) throws Exception {
-		return geoRegionsRepository.fetchById(id);
+		return geoRegionsRepository.getById(id);
 	}
 
 	

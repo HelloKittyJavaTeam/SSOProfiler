@@ -122,12 +122,12 @@ public class ApplicationServiceImpl implements ApplicationService{
 
 	
 	public List<Application> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws Exception {
-		return applicationRepository.fetchAll(start, limit, orderColumn);
+		return applicationRepository.getAll(start, limit, orderColumn);
 	}
 
 	
 	public Application fetchById(Object id) throws Exception {
-		return applicationRepository.fetchById(id);
+		return applicationRepository.getById(id);
 	}
 
 	

@@ -121,12 +121,12 @@ public class CompanyRoleServiceImpl implements CompanyRoleService{
 
 	
 	public List<CompanyRole> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws Exception {
-		return companyRoleRepository.fetchAll(start, limit, orderColumn);
+		return companyRoleRepository.getAll(start, limit, orderColumn);
 	}
 
 	
 	public CompanyRole fetchById(Object id) throws Exception {
-		return companyRoleRepository.fetchById(id);
+		return companyRoleRepository.getById(id);
 	}
 
 	

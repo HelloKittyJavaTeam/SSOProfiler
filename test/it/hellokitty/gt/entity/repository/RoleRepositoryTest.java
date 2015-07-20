@@ -62,12 +62,12 @@ public class RoleRepositoryTest {
 	@Test
 	public void roleFetchById(){
 		try {
-			Role bull = roleRep.fetchById(99999l);
+			Role bull = roleRep.getById(99999l);
 			assertNotNull("No Role returned from fetchById", bull);
 			assertTrue("roleFetchById method failed on retrieve content value. "
 					+ "Actual value: "+bull.getName()+" "
 					+ "Expected value: NAMETEST 0", bull.getName().equals("NAMETEST 0"));
-			bull= roleRep.fetchById(987654321l);
+			bull= roleRep.getById(987654321l);
 			assertNull(bull);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -83,7 +83,7 @@ public class RoleRepositoryTest {
 		try {
 			LinkedHashMap<String, String> cdMap = new LinkedHashMap<String, String>();
 			cdMap.put("id", "asc");
-			List<Role> bullList = roleRep.fetchAll(0, 20, cdMap);
+			List<Role> bullList = roleRep.getAll(0, 20, cdMap);
 			assertTrue("roleFetchAll returned a empty list.", bullList.size() > 0);
 			assertTrue("roleFetchAll didn't return all the elements.", bullList.size() >= 20);
 			for(int index = 0; index < bullList.size()-1; index++){
@@ -98,7 +98,7 @@ public class RoleRepositoryTest {
 		try {
 			LinkedHashMap<String, String> cdMap = new LinkedHashMap<String, String>();
 			cdMap.put("id", "desc");
-			List<Role> bullList = roleRep.fetchAll(0, 20, cdMap);
+			List<Role> bullList = roleRep.getAll(0, 20, cdMap);
 			for(int index = 0; index < bullList.size()-1; index++){
 				if(bullList.get(index).getId() < bullList.get(index+1).getId()){
 					fail("roleFetchAll method failed during asc order check. Id at index "+index+":"+bullList.get(index).getId()+" next: "+index+":"+bullList.get(index+1).getId());
@@ -111,7 +111,7 @@ public class RoleRepositoryTest {
 		try {
 			LinkedHashMap<String, String> cdMap = new LinkedHashMap<String, String>();
 			cdMap.put("id", "desc");
-			List<Role> bullList = roleRep.fetchAll(0, 17, cdMap);
+			List<Role> bullList = roleRep.getAll(0, 17, cdMap);
 			assertTrue("roleFetchAll didn't return all the elements.", bullList.size() == 17);
 		} catch (Exception e) {
 			fail("Caught Exception in roleFetchById method. "+e.toString());

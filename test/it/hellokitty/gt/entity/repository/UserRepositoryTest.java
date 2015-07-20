@@ -61,12 +61,12 @@ public class UserRepositoryTest {
 	@Test
 	public void userFetchById(){
 		try {
-			AdUsers bull = userRep.fetchById(99999l);
+			AdUsers bull = userRep.getById(99999l);
 			assertNotNull("No User returned from fetchById", bull);
 			assertTrue("userFetchById method failed on retrieve content value. "
 					+ "Actual value: "+bull.getFirstName()+" "
 					+ "Expected value: NAMETEST 0", bull.getFirstName().equals("NAMETEST 0"));
-			bull= userRep.fetchById(987654321l);
+			bull= userRep.getById(987654321l);
 			assertNull(bull);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,7 +82,7 @@ public class UserRepositoryTest {
 		try {
 			LinkedHashMap<String, String> cdMap = new LinkedHashMap<String, String>();
 			cdMap.put("id", "asc");
-			List<AdUsers> bullList = userRep.fetchAll(0, 20, cdMap);
+			List<AdUsers> bullList = userRep.getAll(0, 20, cdMap);
 			assertTrue("userFetchAll returned a empty list.", bullList.size() > 0);
 			assertTrue("userFetchAll didn't return all the elements.", bullList.size() >= 20);
 			for(int index = 0; index < bullList.size()-1; index++){
@@ -97,7 +97,7 @@ public class UserRepositoryTest {
 		try {
 			LinkedHashMap<String, String> cdMap = new LinkedHashMap<String, String>();
 			cdMap.put("id", "desc");
-			List<AdUsers> bullList = userRep.fetchAll(0, 20, cdMap);
+			List<AdUsers> bullList = userRep.getAll(0, 20, cdMap);
 			for(int index = 0; index < bullList.size()-1; index++){
 				if(bullList.get(index).getId() < bullList.get(index+1).getId()){
 					fail("userFetchAll method failed during asc order check. Id at index "+index+":"+bullList.get(index).getId()+" next: "+index+":"+bullList.get(index+1).getId());
@@ -110,7 +110,7 @@ public class UserRepositoryTest {
 		try {
 			LinkedHashMap<String, String> cdMap = new LinkedHashMap<String, String>();
 			cdMap.put("id", "desc");
-			List<AdUsers> bullList = userRep.fetchAll(0, 17, cdMap);
+			List<AdUsers> bullList = userRep.getAll(0, 17, cdMap);
 			assertTrue("userFetchAll didn't return all the elements.", bullList.size() == 17);
 		} catch (Exception e) {
 			fail("Caught Exception in userFetchById method. "+e.toString());

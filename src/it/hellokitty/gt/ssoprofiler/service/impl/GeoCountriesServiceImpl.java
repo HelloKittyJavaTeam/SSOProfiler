@@ -51,12 +51,12 @@ public class GeoCountriesServiceImpl implements GeoCountriesService{
 
 	
 	public List<GeoCountries> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws IllegalArgumentException, Exception {
-		return geoCountriesRepository.fetchAll(start, limit, orderColumn);
+		return geoCountriesRepository.getAll(start, limit, orderColumn);
 	}
 
 	
 	public GeoCountries fetchById(Object id) throws Exception {
-		return geoCountriesRepository.fetchById(id);
+		return geoCountriesRepository.getById(id);
 	}
 
 	

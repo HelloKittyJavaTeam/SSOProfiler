@@ -51,15 +51,13 @@ public class GeoAreasServiceImpl implements GeoAreasService{
 
 	
 	public List<GeoAreas> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws IllegalArgumentException, Exception {
-		return geoAreasRepository.fetchAll(start, limit, orderColumn);
+		return geoAreasRepository.getAll(start, limit, orderColumn);
 	}
 
-	
 	public GeoAreas fetchById(Object id) throws Exception {
-		return geoAreasRepository.fetchById(id);
+		return geoAreasRepository.getById(id);
 	}
 
-	
 	public List<GeoAreas> search(Integer arg0, Integer arg1,
 			LinkedHashMap<String, String> arg2, HashMap<String, Object> arg3,
 			HashMap<String, Object> arg4, HashMap<String, Object> arg5,

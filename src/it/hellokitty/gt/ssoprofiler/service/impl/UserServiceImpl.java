@@ -121,12 +121,12 @@ public class UserServiceImpl implements UserService{
 
 	
 	public List<AdUsers> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws Exception {
-		return userRepository.fetchAll(start, limit, orderColumn);
+		return userRepository.getAll(start, limit, orderColumn);
 	}
 
 	
 	public AdUsers fetchById(Object id) throws Exception {
-		return userRepository.fetchById(id);
+		return userRepository.getById(id);
 	}
 
 	

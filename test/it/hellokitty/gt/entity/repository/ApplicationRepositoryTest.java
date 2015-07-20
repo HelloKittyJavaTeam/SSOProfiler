@@ -62,12 +62,12 @@ public class ApplicationRepositoryTest{
 	@Test
 	public void applicationFetchById(){
 		try {
-			Application bull = applicationRep.fetchById(99999l);
+			Application bull = applicationRep.getById(99999l);
 			assertNotNull("No Application returned from fetchById", bull);
 			assertTrue("applicationFetchById method failed on retrieve content value. "
 					+ "Actual value: "+bull.getName()+" "
 					+ "Expected value: NAMETEST 0", bull.getName().equals("NAMETEST 0"));
-			bull= applicationRep.fetchById(987654321l);
+			bull= applicationRep.getById(987654321l);
 			assertNull(bull);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -83,7 +83,7 @@ public class ApplicationRepositoryTest{
 		try {
 			LinkedHashMap<String, String> cdMap = new LinkedHashMap<String, String>();
 			cdMap.put("id", "asc");
-			List<Application> bullList = applicationRep.fetchAll(0, 20, cdMap);
+			List<Application> bullList = applicationRep.getAll(0, 20, cdMap);
 			assertTrue("applicationFetchAll returned a empty list.", bullList.size() > 0);
 			assertTrue("applicationFetchAll didn't return all the elements.", bullList.size() >= 20);
 			for(int index = 0; index < bullList.size()-1; index++){
@@ -98,7 +98,7 @@ public class ApplicationRepositoryTest{
 		try {
 			LinkedHashMap<String, String> cdMap = new LinkedHashMap<String, String>();
 			cdMap.put("id", "desc");
-			List<Application> bullList = applicationRep.fetchAll(0, 20, cdMap);
+			List<Application> bullList = applicationRep.getAll(0, 20, cdMap);
 			for(int index = 0; index < bullList.size()-1; index++){
 				if(bullList.get(index).getId() < bullList.get(index+1).getId()){
 					fail("applicationFetchAll method failed during asc order check. Id at index "+index+":"+bullList.get(index).getId()+" next: "+index+":"+bullList.get(index+1).getId());
@@ -111,7 +111,7 @@ public class ApplicationRepositoryTest{
 		try {
 			LinkedHashMap<String, String> cdMap = new LinkedHashMap<String, String>();
 			cdMap.put("id", "desc");
-			List<Application> bullList = applicationRep.fetchAll(0, 17, cdMap);
+			List<Application> bullList = applicationRep.getAll(0, 17, cdMap);
 			assertTrue("applicationFetchAll didn't return all the elements.", bullList.size() == 17);
 		} catch (Exception e) {
 			fail("Caught Exception in applicationFetchById method. "+e.toString());

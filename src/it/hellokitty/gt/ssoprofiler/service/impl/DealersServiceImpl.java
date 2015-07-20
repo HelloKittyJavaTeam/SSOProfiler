@@ -51,12 +51,12 @@ public class DealersServiceImpl implements DealersService{
 
 	
 	public List<Dealers> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws IllegalArgumentException, Exception {
-		return dealersRepository.fetchAll(start, limit, orderColumn);
+		return dealersRepository.getAll(start, limit, orderColumn);
 	}
 
 	
 	public Dealers fetchById(Object id) throws Exception {
-		return dealersRepository.fetchById(id);
+		return dealersRepository.getById(id);
 	}
 
 	

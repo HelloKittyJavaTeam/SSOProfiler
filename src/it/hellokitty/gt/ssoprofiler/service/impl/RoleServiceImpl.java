@@ -121,12 +121,12 @@ public class RoleServiceImpl implements RoleService{
 
 	
 	public List<Role> fetchAll(Integer start, Integer limit, LinkedHashMap<String, String> orderColumn) throws Exception {
-		return roleRepository.fetchAll(start, limit, orderColumn);
+		return roleRepository.getAll(start, limit, orderColumn);
 	}
 
 	
 	public Role fetchById(Object id) throws Exception {
-		return roleRepository.fetchById(id);
+		return roleRepository.getById(id);
 	}
 
 	
