@@ -13,8 +13,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ServiceImpl implements Service{
-	private ApplicationRepositoryImpl applicationRepository  = new ApplicationRepositoryImpl();
-	private RoleRepositoryImpl 		  roleRepository   	     = new RoleRepositoryImpl();
+	private ApplicationRepositoryImpl applicationRepository = new ApplicationRepositoryImpl();
+	private RoleRepositoryImpl 		  roleRepository   	    = new RoleRepositoryImpl();
 	private CompanyRoleRepositoryImpl companyRoleRepository = new CompanyRoleRepositoryImpl();
 	
 	private static ServiceImpl serviceImpl;
