@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,17 +29,11 @@ public class GeoCountries implements Serializable {
 	@Column(name="ID")
 	private String id;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_COUNTRY", referencedColumnName="ID")
-	private List<UserCountry> userCountry;
-	
-	public List<UserCountry> getUserCountry() {
-		return userCountry;
-	}
-
-	public void setUserCountry(List<UserCountry> userCountry) {
-		this.userCountry = userCountry;
-	}
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="SSO_USER_COUNTRIES",
+			joinColumns=@JoinColumn(name="ID_GEO_COUNTRIES"),
+			inverseJoinColumns=@JoinColumn(name="ID_USER"))
+	private List<AdUsers> adUsers;
 
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="COUNTRY_CODE", referencedColumnName="ID_ISO3166")

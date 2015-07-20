@@ -11,9 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,9 +33,11 @@ public class Dealers implements Serializable {
 	@Id
 	private String id;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_DEALER", referencedColumnName="ID")
-	private List<UserDealer> userDealers;
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="SSO_USER_DEALERS",
+			joinColumns=@JoinColumn(name="ID_DEALERS"),
+			inverseJoinColumns=@JoinColumn(name="ID_USER"))
+	private List<AdUsers> adUsers;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="COUNTRY_CODE", referencedColumnName="ID_ISO3166")
@@ -532,14 +535,6 @@ public class Dealers implements Serializable {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-
-	public List<UserDealer> getUserDealers() {
-		return userDealers;
-	}
-
-	public void setUserDealers(List<UserDealer> userDealers) {
-		this.userDealers = userDealers;
-	}
 	
 	public GeoCountries getCountry() {
 		return country;
@@ -547,5 +542,13 @@ public class Dealers implements Serializable {
 
 	public void setCountry(GeoCountries country) {
 		this.country = country;
+	}
+
+	public List<AdUsers> getAdUsers() {
+		return adUsers;
+	}
+
+	public void setAdUsers(List<AdUsers> adUsers) {
+		this.adUsers = adUsers;
 	}
 }

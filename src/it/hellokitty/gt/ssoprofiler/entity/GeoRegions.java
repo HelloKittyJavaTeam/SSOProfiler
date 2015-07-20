@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,9 +29,11 @@ public class GeoRegions implements Serializable {
 	@Column(name="ID")
 	private String id;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_REGION", referencedColumnName="ID")
-	private List<UserRegion> userRegions;
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="SSO_USER_REGIONS",
+			joinColumns=@JoinColumn(name="ID_GEO_REGIONS"),
+			inverseJoinColumns=@JoinColumn(name="ID_USER"))
+	private List<AdUsers> adUsers;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_REGION", referencedColumnName="ID")
@@ -199,19 +203,19 @@ public class GeoRegions implements Serializable {
 		}
 	}
 
+	public List<AdUsers> getAdUsers() {
+		return adUsers;
+	}
+
+	public void setAdUsers(List<AdUsers> adUsers) {
+		this.adUsers = adUsers;
+	}
+
 	public void setActive(boolean active) {
 		if(active){
 			this.active = "Y";
 		} else {
 			this.active = "N";
 		}
-	}
-
-	public List<UserRegion> getUserRegions() {
-		return userRegions;
-	}
-
-	public void setUserRegions(List<UserRegion> userRegions) {
-		this.userRegions = userRegions;
 	}
 }

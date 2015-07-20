@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +23,7 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@Table(name="AD_USERS")
+@Table(name="SSO_AD_USERS")
 @NamedQuery(name="AdUsers.findAll", query="SELECT x FROM AdUsers x")
 public class AdUsers implements Serializable {
 	private static final long serialVersionUID = 2927991163881025898L;
@@ -38,21 +37,29 @@ public class AdUsers implements Serializable {
 			inverseJoinColumns=@JoinColumn(name="ID_ROLE"))
 	private List<Role> roles;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_USER", referencedColumnName="ID")
-	private List<UserArea> userArea;
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="SSO_USER_AREA",
+			joinColumns=@JoinColumn(name="ID_USER"),
+			inverseJoinColumns=@JoinColumn(name="ID_GEO_AREAS"))
+	private List<GeoAreas> areas;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_USER", referencedColumnName="ID")
-	private List<UserRegion> userRegion;
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="SSO_USER_REGIONS",
+			joinColumns=@JoinColumn(name="ID_USER"),
+			inverseJoinColumns=@JoinColumn(name="ID_GEO_REGIONS"))
+	private List<GeoRegions> regions;
+
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="SSO_USER_COUNTRIES",
+			joinColumns=@JoinColumn(name="ID_USER"),
+			inverseJoinColumns=@JoinColumn(name="ID_GEO_COUNTRIES"))
+	private List<GeoCountries> countries;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_USER", referencedColumnName="ID")
-	private List<UserCountry> userCountry;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_USER", referencedColumnName="ID")
-	private List<UserDealer> userDealer;
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="SSO_USER_DEALERS",
+			joinColumns=@JoinColumn(name="ID_USER"),
+			inverseJoinColumns=@JoinColumn(name="ID_DEALERS"))
+	private List<Dealers> dealers;
 	
 	private String active;
 
@@ -294,35 +301,35 @@ public class AdUsers implements Serializable {
 		this.roles = roles;
 	}
 
-	public List<UserArea> getUserArea() {
-		return userArea;
+	public List<Dealers> getDealers() {
+		return dealers;
 	}
 
-	public void setUserArea(List<UserArea> userArea) {
-		this.userArea = userArea;
+	public void setDealers(List<Dealers> dealers) {
+		this.dealers = dealers;
 	}
 
-	public List<UserRegion> getUserRegion() {
-		return userRegion;
+	public List<GeoAreas> getAreas() {
+		return areas;
 	}
 
-	public void setUserRegion(List<UserRegion> userRegion) {
-		this.userRegion = userRegion;
+	public void setAreas(List<GeoAreas> areas) {
+		this.areas = areas;
 	}
 
-	public List<UserCountry> getUserCountry() {
-		return userCountry;
+	public List<GeoRegions> getRegions() {
+		return regions;
 	}
 
-	public void setUserCountry(List<UserCountry> userCountry) {
-		this.userCountry = userCountry;
+	public void setRegions(List<GeoRegions> regions) {
+		this.regions = regions;
 	}
 
-	public List<UserDealer> getUserDealer() {
-		return userDealer;
+	public List<GeoCountries> getCountries() {
+		return countries;
 	}
 
-	public void setUserDealer(List<UserDealer> userDealer) {
-		this.userDealer = userDealer;
+	public void setCountries(List<GeoCountries> countries) {
+		this.countries = countries;
 	}
 }

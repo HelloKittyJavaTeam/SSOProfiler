@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,9 +28,15 @@ public class GeoAreas implements Serializable {
 	@Column(name="ID")
 	private String id;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_AREA", referencedColumnName="ID")
-	private List<UserArea> userAreas;
+//	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JoinColumn(name="ID_AREA", referencedColumnName="ID")
+//	private List<UserArea> userAreas;
+	
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="SSO_USER_AREA",
+			joinColumns=@JoinColumn(name="ID_GEO_AREAS"),
+			inverseJoinColumns=@JoinColumn(name="ID_USER"))
+	private List<AdUsers> adUsers;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_AREA", referencedColumnName="ID")
@@ -194,11 +202,11 @@ public class GeoAreas implements Serializable {
 		this.dateMod = dateMod;
 	}
 
-	public List<UserArea> getUserAreas() {
-		return userAreas;
+	public List<AdUsers> getAdUsers() {
+		return adUsers;
 	}
 
-	public void setUserAreas(List<UserArea> userAreas) {
-		this.userAreas = userAreas;
+	public void setAdUsers(List<AdUsers> adUsers) {
+		this.adUsers = adUsers;
 	}
 }
