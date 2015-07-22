@@ -1,6 +1,6 @@
 package it.hellokitty.gt.ssoprofiler.repository.impl;
 
-import it.hellokitty.gt.repository.utils.RepositoryUtils;
+import it.ferrari.gt.repository.utils.RepositoryUtils;
 import it.hellokitty.gt.ssoprofiler.entity.Role;
 import it.hellokitty.gt.ssoprofiler.repository.RoleRepository;
 

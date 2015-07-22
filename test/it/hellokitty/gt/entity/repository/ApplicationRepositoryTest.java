@@ -27,6 +27,8 @@ public class ApplicationRepositoryTest{
 	private static EntityManager em = Persistence.createEntityManagerFactory("SSOPROFILER_PU").createEntityManager();
 	private static Application applicationAdd;
 
+	
+	
 	@Before
 	public void insert20Elements() {
 		EntityTransaction transaction = em.getTransaction();

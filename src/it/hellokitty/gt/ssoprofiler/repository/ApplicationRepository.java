@@ -1,6 +1,6 @@
 package it.hellokitty.gt.ssoprofiler.repository;
 
-import it.hellokitty.gt.repository.Repository;
+import it.ferrari.gt.repository.Repository;
 import it.hellokitty.gt.ssoprofiler.entity.Application;
 
 public interface ApplicationRepository extends Repository<Application>{}

@@ -29,15 +29,17 @@ public class GeoCountries implements Serializable {
 	@Column(name="ID")
 	private String id;
 	
+
+
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="COUNTRY_CODE", referencedColumnName="ID_ISO3166")
+	private List<Dealers> dealers;
+	
 	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name="SSO_USER_COUNTRIES",
 			joinColumns=@JoinColumn(name="ID_GEO_COUNTRIES"),
 			inverseJoinColumns=@JoinColumn(name="ID_USER"))
 	private List<AdUsers> adUsers;
-
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="COUNTRY_CODE", referencedColumnName="ID_ISO3166")
-	private List<Dealers> dealers;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_REGION", referencedColumnName="ID")

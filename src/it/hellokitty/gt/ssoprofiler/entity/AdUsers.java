@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +23,6 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="SSO_AD_USERS")
-@NamedQuery(name="AdUsers.findAll", query="SELECT x FROM AdUsers x")
 public class AdUsers implements Serializable {
 	private static final long serialVersionUID = 2927991163881025898L;
 

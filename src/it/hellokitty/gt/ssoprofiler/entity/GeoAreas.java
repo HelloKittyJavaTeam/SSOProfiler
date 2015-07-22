@@ -28,18 +28,13 @@ public class GeoAreas implements Serializable {
 	@Column(name="ID")
 	private String id;
 	
-//	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-//	@JoinColumn(name="ID_AREA", referencedColumnName="ID")
-//	private List<UserArea> userAreas;
-	
 	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name="SSO_USER_AREA",
 			joinColumns=@JoinColumn(name="ID_GEO_AREAS"),
 			inverseJoinColumns=@JoinColumn(name="ID_USER"))
 	private List<AdUsers> adUsers;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_AREA", referencedColumnName="ID")
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="area")
 	private List<GeoRegions> regions;
 	
 	@Column(name="DESCRIPTION_IT")

@@ -1,6 +1,6 @@
 package it.hellokitty.gt.ssoprofiler.repository.impl;
 
-import it.hellokitty.gt.repository.utils.RepositoryUtilsExt;
+import it.ferrari.gt.repository.utils.RepositoryUtilsExt;
 import it.hellokitty.gt.ssoprofiler.entity.GeoAreas;
 import it.hellokitty.gt.ssoprofiler.repository.GeoAreasRepository;
 

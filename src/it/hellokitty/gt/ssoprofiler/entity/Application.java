@@ -1,6 +1,6 @@
 package it.hellokitty.gt.ssoprofiler.entity;
 
-import it.hellokitty.gt.entity.BaseObject;
+import it.ferrari.gt.entity.BaseObject;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,7 +13,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -36,8 +35,7 @@ public class Application extends BaseObject implements Serializable{
 	
 	private String name;
 
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="APPLICATION_ID", referencedColumnName="ID")
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="application")
 	private List<Role> roles;
 
 	public Application() {}

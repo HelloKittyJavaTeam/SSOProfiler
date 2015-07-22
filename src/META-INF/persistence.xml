@@ -6,18 +6,18 @@
   	<persistence-unit name="SSOPROFILER_PU" transaction-type="RESOURCE_LOCAL">
   		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
   		<jta-data-source>SSOPROFILER_PU</jta-data-source>
-		<class>it.ferrari.gt.bulletin.entity.Application</class>
-        <class>it.ferrari.gt.bulletin.entity.CompanyRole</class>
-        <class>it.ferrari.gt.bulletin.entity.Dealers</class>
-        <class>it.ferrari.gt.bulletin.entity.GeoAreas</class>
-        <class>it.ferrari.gt.bulletin.entity.GeoCountries</class>
-        <class>it.ferrari.gt.bulletin.entity.GeoRegions</class>
-        <class>it.ferrari.gt.bulletin.entity.Role</class>
-        <class>it.ferrari.gt.bulletin.entity.User</class>
-        <class>it.ferrari.gt.bulletin.entity.UserArea</class>
-        <class>it.ferrari.gt.bulletin.entity.UserCountry</class>
-        <class>it.ferrari.gt.bulletin.entity.UserDealer</class>
-        <class>it.ferrari.gt.bulletin.entity.UserRegion</class>
+		<class>it.hellokitty.gt.ssoprofiler.entity.Application</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.CompanyRole</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.Dealers</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.GeoAreas</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.GeoCountries</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.GeoRegions</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.Role</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.AdUser</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.UserArea</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.UserCountry</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.UserDealer</class>
+        <class>it.hellokitty.gt.ssoprofiler.entity.UserRegion</class>
   		<exclude-unlisted-classes>false</exclude-unlisted-classes>
   		<properties>
   			<property name="javax.persistence.jdbc.url" 	 value="jdbc:oracle:thin:@localhost:1521/orcl" />
@@ -26,8 +26,8 @@
     		<property name="javax.persistence.jdbc.password" value="bulletin" />
     		<property name="eclipselink.ddl-generation" 	 value="create-or-extend-tables"/>
     		<property name="eclipselink.logging.file" 		 value="output.log"/>
-    		<property name="eclipselink.logging.level.sql" 	value="FINE"/>
-    		<property name="eclipselink.logging.parameters" value="true"/>
+    		<property name="eclipselink.logging.level.sql" 	 value="FINE"/>
+    		<property name="eclipselink.logging.parameters"  value="true"/>
   		</properties>
 	</persistence-unit>
 </persistence>
